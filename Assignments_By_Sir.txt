@@ -1,0 +1,130 @@
+
+
+---------------*-----File Find*-----------------------
+
+echo "Enter the file name";
+read f;
+if [ -e $f ]
+then
+
+echo "File exists and content is:";
+echo "$(cat $f)";
+fi
+
+---------------*-----Directory Find*-----------------------
+echo "Enter the directory name";
+read d;
+if [ -d $d ]
+then
+        echo "Directory is found";
+        echo "$(ls ./$d/)";
+else
+        echo "Directory not found";
+fi
+-----------******---------------------------------------
+-------Range-----------
+
+echo "Enter min";
+read min;
+echo "Enter max";
+read max;
+line=$(echo "$(wc -l < demo)");
+echo "$(tail -n +$min demo | head -n -$(($line - $max)))";
+
+------------------reverse-----------------------------
+echo "Enter the number";
+read num;
+n=$num;
+rev=0;
+rem=0;
+while [ $n -ne 0 ]
+do
+        rem=$(($n%10));
+        rev=$(($(($rev*10))+$rem));
+        n=$(($n/10));
+
+done
+
+echo "$rev";
+-------------------Palindrome ----------------------------------
+
+echo "Enter the number";
+read num;
+n=$num;
+rev=0;
+rem=0;
+while [ $n -ne 0 ]
+do
+        rem=$(($n%10));
+        rev=$(($(($rev*10))+$rem));
+        n=$(($n/10));
+
+done
+if [ $num -eq $rev ]
+then
+        echo "number is Palindrom";
+        echo "$rev";
+else
+        echo "Number Is Not Palindrome";
+        echo "$rev";
+        echo "$num";
+fi
+
+-----------------String Palindrome----------------
+echo "Enter the String";
+read str;
+str2=$(echo "$str" | rev);
+echo "$str2";
+if [ $str == $str2 ]
+then
+        echo "String is palindrome";
+        echo "$str";
+else
+        echo "Srting is not palindrome";
+        echo "$str2";
+fi
+---------------Diamond----------------------------
+for ((i=0;i<5;i++))
+do
+        for ((space=5;space>i;space--))
+        do
+                echo -n " ";
+        done
+        for ((star=0;star<=i;star++))
+        do
+                echo -n "* ";
+        done
+                echo "";
+
+done
+for ((i=5;i>=0;i--))
+do
+        for ((space=5;space>i;space--))
+        do
+                echo -n " ";
+        done
+        for ((star=0;star<=i;star++))
+        do
+                echo -n "* ";
+        done
+                echo "";
+done
+
+------------------------------------------------------
+
+
+Recent updated files
+-------------------
+-------------------
+
+find . -type f -mtime -2  -exec mv -t /home/group015/os/recentlyupdated/recent/ {} +
+
+-------------------------------------------------------
+
+delete empty file
+
+find . -size 0 -delete
+------------
+------------
+
+
